@@ -1,0 +1,35 @@
+{
+  "moveForward": {
+    "duration": 1,
+    "power": 100
+  },
+
+  "moveBackward": {
+    "duration": 1,
+    "power": 50
+  },
+
+  "turnLeft": {
+    "degree": 180,
+    "power": 100
+  },
+
+  "turnRight": {
+    "degree": 0,
+    "power": 100
+  },
+
+  "stop": {
+    "duration": 0
+  },
+
+  "sensorDistance": {
+    "minimumDistance": 100
+  },
+
+  "loop": {
+    "instruction1": "moveForward",
+    "instruction2": "moveBackward",
+    "instruction3": "turnLeft"
+  }
+}
