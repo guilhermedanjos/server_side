@@ -1,15 +1,17 @@
 import SocketServer
-from parser.py import Parser
+from parser import Parser
+import command
 
 class AlfaTCPHandler(SocketServer.BaseRequestHandler):
-  # Get the parser
-  parser = Parser()
 
   # Handle the AndroidApp request
   def handle(self):
     self.data = self.request.recv(1024).strip()
     # Parse the Json file
-    parser.parseJson(data)
+    parser = Parser()
+    parser.parseJson(self.data)
+    execfile("command.py")
+
 
 # Stablish connections with the AndroidApp
 if __name__ == "__main__":

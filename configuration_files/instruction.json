@@ -1,20 +1,11 @@
 {
-  "moveForward": {
+  "move": {
     "duration": 1,
-    "power": 100
+    "power": 50,
+    "orientation": 1
   },
 
-  "moveBackward": {
-    "duration": 1,
-    "power": 50
-  },
-
-  "turnLeft": {
-    "degree": 180,
-    "power": 100
-  },
-
-  "turnRight": {
+  "turn": {
     "degree": 0,
     "power": 100
   },
