@@ -1,13 +1,12 @@
 import json
-from pprint import pprint
+from collections import OrderedDict
 
-# Text how to get the list of instructions
+# Loads the Json file in a OrderedDict
+parsed_json = json.load(open('instruction.json'), object_pairs_hook=OrderedDict)
+#print json.dumps(parsed_json, indent=2)
 
-with open('instruction.json') as json_file:
-    parsed_json = json.load(json_file)
-    size = len(parsed_json)
-
-
-    for i in range(0, size):
-        print(parsed_json.keys()[i])
-        print parsed_json.itervalues().next()
+# Iterates through the json file
+size = len(parsed_json)
+for i in range(0, size):
+    print parsed_json.keys()[i]
+    print parsed_json.values()[i]
