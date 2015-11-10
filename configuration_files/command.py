@@ -1,44 +1,63 @@
 import RPi.GPIO as GPIO
 import time
 
-# Stablish connections with the AndroidApp
+#GPIO number
+GPIO.setmode(GPIO.BCM)
 
-GPIO.setmode(GPIO.BCM)#GPIO number
+# Disable warning from GPIO
+GPIO.setwarnings(False)
 
-GPIO.setup(18, GPIO.OUT)
-GPIO.setup(23, GPIO.OUT)
-#GPIO.setup(16, GPIO.OUT)
-#GPIO.setup(20, GPIO.OUT)
+# Setup Power Frequency and Duty Cycle
+PWM_FREQ_MAX = 100
+DUTY_CYCLE_MAX = 100
 
-PWM_FREQ = 100
-DUTY_CYCLE = 100
+# Setup pins for spinning direction of the left motor
+leftmotor_in1_pin = 27
+leftmotor_in2_pin = 22
+GPIO.setup(leftmotor_in1_pin, GPIO.OUT)
+GPIO.setup(leftmotor_in2_pin, GPIO.OUT)
 
-#Motor 1
-pwm_pin1 = GPIO.PWM(18,PWM_FREQ)
-pwm_pin1.start(0)
-pwm_pin1.ChangeDutyCycle(DUTY_CYCLE)
+# Setup pins for spinning direction of the right motor
+rightmotor_in1_pin = 24
+rightmotor_in2_pin = 25
+GPIO.setup(rightmotor_in1_pin, GPIO.OUT)
+GPIO.setup(rightmotor_in2_pin, GPIO.OUT)
 
-#motor 1
-pwm_pin2 = GPIO.PWM(23,PWM_FREQ)
-pwm_pin2.start(0)
-pwm_pin2.ChangeDutyCycle(DUTY_CYCLE)
+# Setup pins for left motor power
+leftpwd_in1_pin = 4
+leftpwm_in2_pin = 17
+GPIO.setup(leftpwd_in1_pin, GPIO.OUT)
+GPIO.setup(leftpwm_in2_pin, GPIO.OUT)
+motorpwm1 = GPIO.PWM(leftpwd_in1_pin, 100)
+motorpwm3 = GPIO.PWM(leftpwm_in2_pin, 100)
+motorpwm1.start(0)
+motorpwm1.ChangeDutyCycle(100)
+motorpwm3.start(0)
+motorpwm3.ChangeDutyCycle(100)
 
-#Motor 2
-#pwm_pin3 = GPIO.PWM(16,PWM_FREQ)
-#pwm_pin3.start(0)
-#pwm_pin3.ChangeDutyCycle(DUTY_CYCLE)
+# Setup pins for right motor power
+rightpwd_in1_pin = 18
+rightpwd_in2_pin = 23
+GPIO.setup(rightpwd_in1_pin, GPIO.OUT)
+GPIO.setup(rightpwd_in2_pin, GPIO.OUT)
+motorpwm2 = GPIO.PWM(18,100)
+motorpwm4 = GPIO.PWM(23,100)
+motorpwm2.start(0)
+motorpwm2.ChangeDutyCycle(100)
+motorpwm4.start(0)
+motorpwm4.ChangeDutyCycle(100)
 
-#motor 2
-#pwm_pin4 = GPIO.PWM(20,PWM_FREQ)
-#pwm_pin4.start(0)
-#pwm_pin4.ChangeDutyCycle(DUTY_CYCLE)
-
+# Set the engines to reverse direction
+GPIO.output(leftmotor_in1_pin, True)
+GPIO.output(leftmotor_in2_pin, False)
+GPIO.output(rightmotor_in1_pin, True)
+GPIO.output(rightmotor_in2_pin, False)
 
 time.sleep(10)
 
-pwm_pin1.stop()
-pwm_pin2.stop()
-#pwm_pin3.stop()
-#pwm_pin4.stop()
+motorpwm1.stop()
+motorpwm2.stop()
+motorpwm3.stop()
+motorpwm4.stop()
 
 GPIO.cleanup()
