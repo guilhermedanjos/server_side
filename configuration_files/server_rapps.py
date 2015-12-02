@@ -10,8 +10,6 @@ class AlfaTCPHandler(SocketServer.BaseRequestHandler):
     # Parse the Json file
     parser = Parser()
     parser.parseJson(self.data)
-    execfile("command.py")
-
 
 # Stablish connections with the AndroidApp
 if __name__ == "__main__":

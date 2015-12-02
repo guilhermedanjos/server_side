@@ -1,8 +1,18 @@
 {
+
+  "sensorDistance": {
+    "minimumDistance": 100
+  },
+
   "move": {
     "duration": 1,
     "power": 50,
     "orientation": 1
+  },
+
+  "loop": {
+    "instructions": 2,
+    "loops": 5
   },
 
   "turn": {
@@ -14,13 +24,8 @@
     "duration": 0
   },
 
-  "sensorDistance": {
-    "minimumDistance": 100
-  },
-
-  "loop": {
-    "instruction1": "moveForward",
-    "instruction2": "moveBackward",
-    "instruction3": "turnLeft"
+  "stop": {
+    "duration": 0
   }
+
 }
