@@ -47,11 +47,11 @@ motorpwm2.ChangeDutyCycle(100)
 motorpwm4.start(0)
 motorpwm4.ChangeDutyCycle(100)
 
-# Set the engines to move backward
-GPIO.output(leftmotor_in1_pin, True)
-GPIO.output(leftmotor_in2_pin, False)
-GPIO.output(rightmotor_in1_pin, True)
-GPIO.output(rightmotor_in2_pin, False)
+# Set the engines to move forward
+GPIO.output(leftmotor_in1_pin, False)
+GPIO.output(leftmotor_in2_pin, True)
+GPIO.output(rightmotor_in1_pin, False)
+GPIO.output(rightmotor_in2_pin, True)
 
 time.sleep(10)
 
